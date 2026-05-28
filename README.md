@@ -1,243 +1,219 @@
 <div align="center">
 
-<!-- Remplace ce placeholder par ton GIF/photo principal du spider-bot -->
 <img src="https://media1.tenor.com/m/G-jz-3WNwFIAAAAd/spider-man-spider-bot-spider-bot.gif" width="450">
 
 <br/>
 
-# 🕷️ Spider-Bot — Robot araignée 8 pattes sur ESP32-S2
+# 🕷️ Spider-Bot • 8-legged spider robot based on the ESP32-S2
 
-**TIC-RBT1 · Projet 3 · ETNA**
+**TIC-RBT1 · Project 3 · ETNA**
 
 ![ESP32](https://img.shields.io/badge/ESP32-S2_Mini-E7352C?style=flat-square&logo=espressif&logoColor=white)
 ![Language](https://img.shields.io/badge/Language-C-blue?style=flat-square&logo=c)
 ![Toolchain](https://img.shields.io/badge/Toolchain-ESP--IDF-informational?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Fonctionnel-brightgreen?style=flat-square)
-![Rendu](https://img.shields.io/badge/Rendu-Mai%202026-orange?style=flat-square)
+![Rendering](https://img.shields.io/badge/Rendu-Mai%202026-orange?style=flat-square)
 
-</div>
+bb;b</div>
 
----
-
-## 👥 Équipe
+## 👥 Team
 
 <table>
   <tr>
     <td valign="middle">
       <strong>Module :</strong> TIC-RBT1 &nbsp;·&nbsp; <strong>Rendu :</strong> Mai 2026<br/>
-      <strong>Co-Labs ETNA</strong> · Groupe de 4<br/><br/>
+      <strong>Co-Labs ETNA</strong> · Group of 4<br/><br/>
       <code>corde_t</code><br/>
       <code>judea_d</code><br/>
       <code>kingki_n</code><br/>
-      <code>brouar_l</code>
+      <code src="https://github.com/JustKIKS">brouar_l</code>
     </td>
     <td valign="middle" align="center">
       <!-- Remplace par ton GIF -->
-      <img src="https://i.pinimg.com/originals/f3/8d/8d/f38d8ddde751b734217a16e45ec81ca9.gif" width="300">
+      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG81Z2tsaWs0dmliaDFmeHhpNmNjbW5jajA3YXM5NWw1bzBqamprayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/I28GbTWptIZU9fUahx/giphy.gif" width="300">
     </td>
   </tr>
 </table>
 
----
+## 🎯 Presentation
 
-## 🎯 Présentation
+This project involves building and programming an **8-legged spider robot** (a quadruped with two joints per leg) based on the **ESP32-S2 Mini**. The firmware is developed in **C** using the **ESP-IDF** (Espressif IoT Development Framework) toolchain.
 
-Ce projet consiste en la construction et la programmation d'un **robot araignée à 8 pattes** (quadrupède à deux articulations par patte) à base d'**ESP32-S2 Mini**. Le firmware est développé en **C** avec la toolchain **ESP-IDF** (Espressif IoT Development Framework).
-
-Chaque patte est composée de **2 servomoteurs MG90S** (articulation hanche + articulation jambe), soit **8 servos** au total, pilotés en PWM depuis les GPIO du microcontrôleur via un protoboard câblé à la main.
+Each leg consists of **2 MG90S servos** (hip joint + leg joint), for a total of **8 servos**, controlled via PWM from the microcontroller’s GPIO pins through a hand-wired breadboard.
 
 ```
-          Patte R1 ──┐      ┌── Patte L1
-          Patte R2 ──┤      ├── Patte L2
-                     │ ESP  │
-          Patte R3 ──┤  32  ├── Patte L3
-          Patte R4 ──┘      └── Patte L4
+         			 		Leg L3 ──┐      ┌── Leg R3
+         					Leg L1 ──┤      ├── Leg R1
+                     			   	 │ ESP  │
+          					Leg L2 ──┤  32  ├── Leg R2
+          					Leg L4 ──┘ –––– └── Leg R4
+									  Screen
 ```
 
-Un **afficheur OLED SSD1306** (128×64, I2C) monté sur le dessus du robot affiche l'état du système en temps réel.
+An **SSD1306 OLED display** (128×64, I2C) mounted on top of the robot displays the system status in real time.
 
----
+## 🧩 Components
 
-## 🧩 Composants
+| Component                      | Quantity     | Function                                          |
+| ------------------------------ | ------------ | ------------------------------------------------- |
+| Lolin / WeMos ESP32-S2 Mini    | 1            | Microcontroller — Native USB-C, PWM & I2C support |
+| MG90S Servos (metal)           | 8 (+2 spare) | Hip & leg actuators                               |
+| SSD1306 0.96" I2C OLED display | 1            | System status display (128×64)                    |
+| Small breadboard (~5×7 cm)     | 1            | Matrix of headers & power rails                   |
+| 3-pin male headers             | 8            | Servo connectors on breadboard                    |
+| Buck converter (5–12V → 5V/3A) | 1            | Stable power supply for ESP32 + servos            |
+| KCD1 toggle switch             | 1            | Main power cutoff                                 |
+| 22 AWG silicone cable          | ∞            | Power bus & ground                                |
+| 30 AWG silicone cable          | ∞            | Servo & I2C signal lines                          |
+| Heat-shrink tubing             | ∞            | Junction insulation                               |
+| Cable ties                     | ∞            | Internal wiring management                        |
+| 3D-printed parts               | ∞            | Chassis, hips, legs, cover                        |
+| M2 self-tapping screws         | ∞            | Assembly mounting                                 |
+| USB-C cable (5V/3A)            | 1            | Flashing & AC power supply                        |
 
-| Composant                        | Quantité     | Rôle                                             |
-| -------------------------------- | ------------ | ------------------------------------------------ |
-| Lolin / WeMos ESP32-S2 Mini      | 1            | Microcontrôleur — USB-C natif, gestion PWM & I2C |
-| Servomoteurs MG90S (métal)       | 8 (+2 spare) | Actionneurs hanches & jambes                     |
-| Afficheur OLED SSD1306 0.96" I2C | 1            | Affichage état système (128×64)                  |
-| Small protoboard (~5×7 cm)       | 1            | Matrice de headers & rails d'alimentation        |
-| Headers mâles 3 broches          | 8            | Connecteurs servo sur protoboard                 |
-| Buck converter (5–12V → 5V/3A)   | 1            | Alimentation stable pour ESP32 + servos          |
-| Interrupteur à bascule KCD1      | 1            | Coupure alimentation principale                  |
-| Câble silicone 22 AWG            | —            | Bus alimentation & masse                         |
-| Câble silicone 30 AWG            | —            | Lignes de signal servo & I2C                     |
-| Gaines thermorétractables        | —            | Isolation des jonctions                          |
-| Serre-câbles                     | —            | Rangement du câblage interne                     |
-| Pièces imprimées 3D              | —            | Châssis, hanches, jambes, couvercle              |
-| Vis M2 auto-taraudeuses          | —            | Fixation de l'ensemble                           |
-| Câble USB-C (5V/3A)              | 1            | Flashing & alimentation secteur                  |
+## 🛠️ Toolchain & Environment
 
----
+The firmware is developed using **ESP-IDF** (Espressif IoT Development Framework), the official Espressif toolchain for ESP32.
 
-## 🛠️ Toolchain & environnement
-
-Le firmware est développé avec **ESP-IDF** (Espressif IoT Development Framework), la toolchain officielle Espressif pour les ESP32.
-
-### Installation ESP-IDF
+### Installing ESP-IDF
 
 ```bash
-# 1. Cloner ESP-IDF
+# 1. Clone ESP-IDF
 git clone --recursive https://github.com/espressif/esp-idf.git
 cd esp-idf
 
-# 2. Installer les outils pour ESP32-S2
+# 2. Install the tools for ESP32-S2
 ./install.sh esp32s2
 
-# 3. Sourcer l'environnement (à faire à chaque session)
+# 3. Set up the environment (must be done at the start of each session)
 . ./export.sh
 ```
 
-> La version recommandée est **ESP-IDF v5.x** (LTS). Vérifier la compatibilité avec l'ESP32-S2 Mini avant d'utiliser une version plus récente.
+> The recommended version is **ESP-IDF v5.x** (LTS). Check compatibility with the ESP32-S2 Mini before using a newer version.
 
----
+## 📐 Pin Configuration
 
-## 📐 Configuration des pins
+| Motor / Component | Array Index | GPIO    | Position                    |
+| ----------------- | ----------- | ------- | --------------------------- |
+| Motor 0           | 0           | GPIO 1  | R1 — front right hip        |
+| Motor 1           | 1           | GPIO 2  | R2 — front-center right hip |
+| Motor 2           | 2           | GPIO 4  | L1 — front left hip         |
+| Motor 3           | 3           | GPIO 6  | L2 — front-center left hip  |
+| Motor 4           | 4           | GPIO 8  | R4 — rear right hip         |
+| Motor 5           | 5           | GPIO 10 | R3 — rear-center right hip  |
+| Motor 6           | 6           | GPIO 13 | L3 — left rear-center hip   |
+| Motor 7           | 7           | GPIO 14 | L4 — rear left hip          |
+| I2C SDA           | —           | GPIO 33 | SSD1306 data                |
+| I2C SCL           | —           | GPIO 35 | SSD1306 clock               |
 
-| Moteur / Composant | Index tableau | GPIO    | Position                          |
-| ------------------ | ------------- | ------- | --------------------------------- |
-| Motor 0            | 0             | GPIO 1  | R1 — hanche droite avant          |
-| Motor 1            | 1             | GPIO 2  | R2 — hanche droite avant-centre   |
-| Motor 2            | 2             | GPIO 4  | L1 — hanche gauche avant          |
-| Motor 3            | 3             | GPIO 6  | L2 — hanche gauche avant-centre   |
-| Motor 4            | 4             | GPIO 8  | R4 — hanche droite arrière        |
-| Motor 5            | 5             | GPIO 10 | R3 — hanche droite arrière-centre |
-| Motor 6            | 6             | GPIO 13 | L3 — hanche gauche arrière-centre |
-| Motor 7            | 7             | GPIO 14 | L4 — hanche gauche arrière        |
-| I2C SDA            | —             | GPIO 33 | SSD1306 data                      |
-| I2C SCL            | —             | GPIO 35 | SSD1306 clock                     |
+## 🔌 Wiring Diagram
 
----
+> The complete diagram is available in the `Spider-Bot/` folder of the repository.
 
-## 🔌 Schéma de câblage
-
-> Le schéma complet est disponible dans le dossier `Spider-Bot/` du dépôt.
-
-### Vue d'ensemble
+### Overview
 
 ```
-Alimentation (batterie ou USB-C)
+Power supply (battery or USB-C)
     │
-    ├──► Interrupteur KCD1
-    │        └──► Buck converter (→ 5V/3A régulés)
-    │                  ├──► Rail 5V protoboard  ──► VCC servos (×8)
+    ├──► KCD1 switch
+    │        └──► Buck converter (→ regulated 5V/3A)
+    │                  ├──► 5V protoboard rail  ──► Servo VCC (×8)
     │                  └──► ESP32-S2 Mini (5V)
     │
     └──► ESP32-S2 Mini
-              ├── GPIO 1,2,4,6,8,10,13,14  ──► Signal servos (×8)
+              ├── GPIO 1,2,4,6,8,10,13,14  ──► Servo signals (×8)
               ├── GPIO 33 (SDA) ──────────► SSD1306 SDA
               └── GPIO 35 (SCL) ──────────► SSD1306 SCL
 ```
 
-### Règles de câblage respectées
+### Wiring guidelines followed
 
-- **22 AWG** — bus alimentation (5V) et masse
-- **30 AWG** — lignes de signal servo et I2C
-- Câbles les plus courts possible pour limiter l'encombrement
-- Buck converter réglé à **5,0V exactement** au multimètre **avant** connexion de l'ESP32
+- **22 AWG** — power bus (5V) and ground
+- **30 AWG** — servo and I2C signal lines
+- Use the shortest possible cables to minimize clutter
+- Set the buck converter to **exactly 5.0V** on a multimeter **before** connecting the ESP32
 
-> ⚠️ Ne jamais mettre sous tension sans avoir vérifié la tension de sortie du buck converter au préalable. Un déréglage au-delà de 5,5V détruit l'ESP32-S2 Mini et les servos.
+> ⚠️ Never power on without first checking the buck converter’s output voltage. A voltage deviation exceeding 5.5V will destroy the ESP32-S2 Mini and the servos.
 
----
-
-## 🏗️ Architecture du firmware
+## 🏗️ Firmware architecture
 
 ```
 SPIDERBOT/
-├── .vscode/                  - Fichiers de configuration de l'éditeur VS Code
-├── SpiderBot/                - Répertoire principal du projet ESP-IDF
-│   ├── main/                 - Code source de l'application
-│   │   ├── CMakeLists.txt    - Configuration de compilation pour le dossier main
-│   │   ├── dance.c           - Logique et implémentation des mouvements/danses
-│   │   ├── dance.h           - Définitions et en-têtes pour les mouvements
-│   │   ├── face.c            - Gestion de l'affichage/visage du robot
-│   │   ├── face.h            - En-têtes pour le visage
-│   │   ├── idf_component.yml - Configuration des dépendances du composant ESP-IDF
-│   │   ├── main.c            - Point d'entrée principal du programme
-│   │   ├── servo.c           - Implémentation du contrôle des servomoteurs
-│   │   └── servo.h           - En-têtes pour les servomoteurs
-│   ├── .gitignore            - Règles d'exclusion pour Git
-│   ├── CMakeLists.txt        - Configuration CMake globale du projet
-│   └── sdkconfig             - Configuration générée par l'outil ESP-IDF
+├── .vscode/                  - VS Code editor configuration files
+├── SpiderBot/                - Main directory of the ESP-IDF project
+│   ├── main/                 - Application source code
+│   │   ├── CMakeLists.txt    - Compilation configuration for the main folder
+│   │   ├── dance.c           - Logic and implementation of movements/dances
+│   │   ├── dance.h           - Definitions and headers for movements
+│   │   ├── face.c            - Management of the robot's display/face
+│   │   ├── face.h            - Headers for the face
+│   │   ├── idf_component.yml - Configuration of ESP-IDF component dependencies
+│   │   ├── main.c            - Main entry point of the program
+│   │   ├── servo.c           - Implementation of servo motor control
+│   │   └── servo.h           - Headers for servo motors
+│   ├── .gitignore            - Exclusion rules for Git
+│   ├── CMakeLists.txt        - Global CMake configuration for the project
+│   └── sdkconfig             - Configuration generated by the ESP-IDF tool
 └── README.md
 ```
 
----
+## 🚀 Installation & Flashing
 
-## 🚀 Installation & flashing
+### Prerequisites
 
-### Prérequis
-
-- ESP-IDF v5.x installé et environnement sourcé (`. ./export.sh`)
-- Câble USB-C 5V/3A
-- L'ESP32-S2 Mini en **mode téléversement** (maintenir `BOOT` au démarrage)
+- ESP-IDF v5.x installed and environment variables set (`. ./export.sh`)
+- 5V/3A USB-C cable
+- The ESP32-S2 Mini in **upload mode** (hold down `BOOT` during startup)
 
 ### Build & flash
 
 ```bash
-# Cloner le dépôt
-git clone https://rendu-git.etna-alternance.net/module-10145/activity-55395/group-1076283
-cd group-1076283/Spider-Bot
+# Clone the repository
+git clone https://github.com/David-JUDEA/Spider-Bot
 
-# Configurer la cible
+# Configure the target
 idf.py set-target esp32s2
 
-# Compiler
+# Compile
 idf.py build
 
-# Flasher (adapter le port série)
+# Flash (adjust the serial port)
 idf.py -p /dev/ttyUSB0 flash
 
-# Monitor série (115200 baud)
+# Serial monitor (115200 baud)
 idf.py -p /dev/ttyUSB0 monitor
 ```
 
-> Sur Windows, remplacer `/dev/ttyUSB0` par `COM*` (vérifier dans le Gestionnaire de périphériques).  
-> Quitter le monitor avec **Ctrl+]**.
+> On Windows, replace `/dev/ttyUSB0` with `COM*` (check in Device Manager).  
+> Exit the monitor with **Ctrl+q**.
 
----
+## 🧪 Testing & Adjustments
 
-## 🧪 Tests & réglages
+| Step                     | Description                                                           | Tool               |
+| ------------------------ | --------------------------------------------------------------------- | ------------------ |
+| **1. Buck converter**    | Check the 5.0V output with a multimeter before making any connections | Multimeter         |
+| **2. Wiring continuity** | Test each connection with a multimeter in continuity mode             | Multimeter         |
+| **3. ESP32 boot**        | Check the boot logs in the serial monitor                             | `idf.py monitor`   |
+| **4. OLED**              | Check the display at boot without the servos connected                | Direct observation |
+| **5. A single servo**    | Test the neutral position and then the extremes on a single servo     | Direct observation |
+| **6. All servos**        | Check angle consistency across all 8 channels                         | Direct observation |
+| **7. Walking sequence**  | Test the full gait with the robot lying flat                          | On the ground      |
+| **8. Fine-tuning**       | Adjust the neutral position offsets for each servo                    | Iterative          |
 
-| Étape                     | Description                                                   | Outil               |
-| ------------------------- | ------------------------------------------------------------- | ------------------- |
-| **1. Buck converter**     | Vérifier la sortie à 5,0V au multimètre avant toute connexion | Multimètre          |
-| **2. Continuité câblage** | Tester chaque connexion au multimètre en mode continuité      | Multimètre          |
-| **3. Boot ESP32**         | Vérifier les logs de démarrage dans le monitor série          | `idf.py monitor`    |
-| **4. OLED**               | Vérifier l'affichage au boot sans les servos connectés        | Observation directe |
-| **5. Un servo seul**      | Tester la position neutre puis les extrêmes sur un seul servo | Observation directe |
-| **6. Tous les servos**    | Vérifier la cohérence des angles sur les 8 canaux             | Observation directe |
-| **7. Séquence de marche** | Tester le gait complet, robot posé à plat                     | Terrain             |
-| **8. Réglage fin**        | Ajuster les offsets de position neutre de chaque servo        | Itératif            |
+## ⚡ Challenges Encountered
 
----
-
-## ⚡ Difficultés rencontrées
-
-- **Réglage du buck converter** : une valeur trop haute (5,3V) a failli endommager un servo. Résolution par mesure systématique au multimètre avant chaque mise sous tension.
-- **Encombrement du câblage** : 8 servos × 3 fils + I2C généraient une masse de câbles difficile à gérer dans le châssis. Résolution en utilisant exclusivement du 30 AWG pour les signaux et en serre-câblant les faisceaux par groupe de pattes.
-- **Mise en place de la toolchain ESP-IDF** : le sourcing de l'environnement (`export.sh`) à chaque session était source d'erreurs. Résolution en ajoutant l'alias dans le `.bashrc` / `.zshrc`.
-- **Offset des servos** : les positions neutres mécaniques ne correspondaient pas exactement à 1500 µs. Résolution en calibrant un offset par servo dans le firmware.
+- **Buck converter settings**: A value that was too high (5.3V) nearly damaged a servo. This was resolved by systematically checking the voltage with a multimeter before each power-up.
+- **Cable clutter**: 8 servos × 3 wires + I2C created a tangled mess of cables that was difficult to manage within the chassis. Resolved by using exclusively 30 AWG wire for signals and bundling the cables by pin group.
+- **Setting up the ESP-IDF toolchain**: Sourcing the environment (`export.sh`) at the start of each session was a source of errors. Solution: Add the alias to `.bashrc` / `.zshrc`.
+- **Servo Offset**: The mechanical neutral positions did not correspond exactly to 1500 µs. Resolved by calibrating an offset per servo in the firmware.
+- **Screen bug**: We struggle with the settings for the axes x and y on the screen but we manage to display two static eyes.
 
 ---
 
 <div align="center">
 
-<img src="https://media1.tenor.com/m/78GsECWnQ04AAAAC/thumbs-up-spider.gif" width="200"> &nbsp;
-<img src="https://media1.tenor.com/m/TsVXIAMBZXoAAAAC/cat-thumbs-up-thumbs-up.gif" width="200"> &nbsp;
-<img src="https://media1.tenor.com/m/spSgkqK707kAAAAd/ok-all.gif" width="280">
-
 _Projet réalisé au Co-Labs ETNA · Module TIC-RBT1 · Mai 2026_
 
-`corde_t` · `judea_d` · `kingki_n` · `brouar_l`
+[Corde_t](https://github.com/ThomasC-Banks) • Judea_d • [Kingki_n](https://github.com/lkb113) • [Brouar_l](https://github.com/JustKIKS)
 
 </div>
