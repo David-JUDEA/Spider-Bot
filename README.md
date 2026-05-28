@@ -212,8 +212,16 @@ idf.py -p /dev/ttyUSB0 monitor
 
 <div align="center">
 
-_Projet réalisé au Co-Labs ETNA · Module TIC-RBT1 · Mai 2026_
+_Project completed at Co-Labs ETNA · ICT-RBT1 Module · May 2026_
 
 [Corde_t](https://github.com/ThomasC-Banks) • Judea_d • [Kingki_n](https://github.com/lkb113) • [Brouar_l](https://github.com/JustKIKS)
 
 </div>
+
+## Gallery
+
+![]()
+![]()
+![]()
+![]()
+![]()
