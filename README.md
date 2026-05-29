@@ -1,20 +1,20 @@
 <div align="center">
 
-<img src="https://media1.tenor.com/m/G-jz-3WNwFIAAAAd/spider-man-spider-bot-spider-bot.gif" width="450">
+<img src="./assets/Banner-spider-robot.svg">
 
 <br/>
 
-# 🕷️ Spider-Bot • 8-legged spider robot based on the ESP32-S2
+# Spider-Bot • 8-legged spider robot based on the ESP32-S2
 
 **TIC-RBT1 · Project 3 · ETNA**
 
 ![ESP32](https://img.shields.io/badge/ESP32-S2_Mini-E7352C?style=flat-square&logo=espressif&logoColor=white)
 ![Language](https://img.shields.io/badge/Language-C-blue?style=flat-square&logo=c)
 ![Toolchain](https://img.shields.io/badge/Toolchain-ESP--IDF-informational?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Fonctionnel-brightgreen?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Functional-brightgreen?style=flat-square)
 ![Rendering](https://img.shields.io/badge/Rendu-Mai%202026-orange?style=flat-square)
 
-bb;b</div>
+</div>
 
 ## 👥 Team
 
@@ -26,7 +26,7 @@ bb;b</div>
       <code>corde_t</code><br/>
       <code>judea_d</code><br/>
       <code>kingki_n</code><br/>
-      <code src="https://github.com/JustKIKS">brouar_l</code>
+      <code>brouar_l</code>
     </td>
     <td valign="middle" align="center">
       <!-- Remplace par ton GIF -->
@@ -214,14 +214,46 @@ idf.py -p /dev/ttyUSB0 monitor
 
 _Project completed at Co-Labs ETNA · ICT-RBT1 Module · May 2026_
 
-[Corde_t](https://github.com/ThomasC-Banks) • Judea_d • [Kingki_n](https://github.com/lkb113) • [Brouar_l](https://github.com/JustKIKS)
+[Corde_t](https://github.com/ThomasC-Banks) • [Judea_d](https://github.com/David-JUDEA) • [Kingki_n](https://github.com/lkb113) • [Brouar_l](https://github.com/JustKIKS)
 
 </div>
 
 ## Gallery
 
-![]()
-![]()
-![]()
-![]()
-![]()
+#### Spider's skeleton and cable management :
+
+![Skeleton](./assets/Spider_skeleton.jpeg)
+
+---
+
+#### All the parts of the spider :
+
+![Parts](./assets/All_parts.jpeg)
+
+---
+
+#### Testing the screen :
+
+<div align="center">
+<img src="./assets/Screen-error.jpeg" width="300">
+<img src="./assets/Testing-screen1.jpeg" width="313">
+<img src="./assets/Testing-screen2.jpeg" width="345">
+</div>
+
+---
+
+#### Before assembly :
+
+![Assembly](./assets/Finish_testing.jpeg)
+
+---
+
+#### Operational :
+
+![Spider](./assets/Finish-status.jpeg)
+
+#### Dancing Spider-robot :
+
+<div align="center">
+<img src="./assets/Spider-robot_dancing.gif" width="400">
+</div>
