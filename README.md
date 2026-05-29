@@ -252,7 +252,7 @@ _Project completed at Co-Labs ETNA · ICT-RBT1 Module · May 2026_
 
 ![Spider](./assets/Finish-status.jpeg)
 
-#### Dancing Spider-robot :
+#### Dancing Spider-robot (I will make a better video) :
 
 <div align="center">
 <img src="./assets/Spider-robot_dancing.gif" width="400">
