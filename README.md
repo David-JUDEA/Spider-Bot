@@ -12,7 +12,7 @@
 ![Language](https://img.shields.io/badge/Language-C-blue?style=flat-square&logo=c)
 ![Toolchain](https://img.shields.io/badge/Toolchain-ESP--IDF-informational?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Functional-brightgreen?style=flat-square)
-![Rendering](https://img.shields.io/badge/Rendu-Mai%202026-orange?style=flat-square)
+![Rendering](https://img.shields.io/badge/Delivered-Mai%202026-orange?style=flat-square)
 
 </div>
 
@@ -21,7 +21,7 @@
 <table>
   <tr>
     <td valign="middle">
-      <strong>Module :</strong> TIC-RBT1 &nbsp;·&nbsp; <strong>Rendu :</strong> Mai 2026<br/>
+      <strong>Module :</strong> TIC-RBT1 &nbsp;·&nbsp; <strong>Delivered :</strong> Mai 2026<br/>
       <strong>Co-Labs ETNA</strong> · Group of 4<br/><br/>
       <code>corde_t</code><br/>
       <code>judea_d</code><br/>
@@ -29,7 +29,6 @@
       <code>brouar_l</code>
     </td>
     <td valign="middle" align="center">
-      <!-- Remplace par ton GIF -->
       <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG81Z2tsaWs0dmliaDFmeHhpNmNjbW5jajA3YXM5NWw1bzBqamprayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/I28GbTWptIZU9fUahx/giphy.gif" width="300">
     </td>
   </tr>
