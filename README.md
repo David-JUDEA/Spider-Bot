@@ -257,3 +257,18 @@ _Project completed at Co-Labs ETNA · ICT-RBT1 Module · May 2026_
 <div align="center">
 <img src="./assets/Spider-robot_dancing.gif" width="400">
 </div>
+
+---
+
+_**A big thanks to ETNA for this amazing project.**_
+
+<p align="right">
+David-JUDEA
+</p>
+
+<div align="right">
+<img src="https://media1.tenor.com/m/IWBpo4WINTQAAAAd/bye.gif" width="100">
+<p>
+See ya
+</p>
+</div>
